@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="KAGO4-Start" type="Application" factoryName="Application">
+  <configuration default="false" name="Main" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="MainProgram" />
     <module name="KAGO4_Project.main" />
     <method v="2">

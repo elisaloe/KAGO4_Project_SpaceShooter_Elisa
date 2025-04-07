@@ -26,6 +26,7 @@ public class ProgramController {
     private final ViewController viewController;  // diese Referenz soll auf ein Objekt der Klasse viewController zeigen. Über dieses Objekt wird das Fenster gesteuert.
     private Player p1;
     private int currentScene;
+    // Das ist ein toller Kommentar
 
     /**
      * Konstruktor
