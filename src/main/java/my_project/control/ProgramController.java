@@ -82,6 +82,7 @@ public class ProgramController {
         viewController.draw(enemy,1);
         p1 = new Player(50,300);
         viewController.draw(p1,1);
+        viewController.register(p1, 1);
 
         // Endbildschirm (Szene 2)
     }
