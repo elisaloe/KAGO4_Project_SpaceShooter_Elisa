@@ -1,10 +1,11 @@
 package my_project.control;
 
+import KAGO_framework.control.Drawable;
 import KAGO_framework.control.SoundController;
 import KAGO_framework.control.ViewController;
-import my_project.model.Picture;
-import my_project.model.Player;
-import my_project.model.StartBackground;
+import KAGO_framework.view.DrawTool;
+import my_project.Config;
+import my_project.model.*;
 import my_project.view.InputManager;
 
 import java.awt.event.KeyEvent;
@@ -62,6 +63,23 @@ public class ProgramController {
 
         // Spielbildschirm (Szene 1)
         viewController.createScene();
+        Background bground = new Background();
+        viewController.draw(bground,1);
+        for (int i = 0; i < 20; i++) {
+            Stern star = new Stern(Math.random() *(Config.WINDOW_WIDTH-50) + 50,  Math.random() * 800,Math.random()*4,5);
+            viewController.draw(star,1);
+        }
+        for (int i = 0; i < 25; i++) {
+            Stern star = new Stern(Math.random() *(Config.WINDOW_WIDTH-50) + 50,  Math.random() * 800,2,3.5);
+            viewController.draw(star,1);
+        }
+        for (int i = 0; i < 30; i++) {
+            Stern star = new Stern(Math.random() *(Config.WINDOW_WIDTH-50) + 50,  Math.random() * 800,1,2);
+            viewController.draw(star,1);
+        }
+
+        Gegner enemy = new Gegner(Math.random() *(Config.WINDOW_WIDTH-50) + 50,Math.random() * 800,Math.random()*10,5);
+        viewController.draw(enemy,1);
         p1 = new Player(50,300);
         viewController.draw(p1,1);
 
@@ -73,7 +91,7 @@ public class ProgramController {
      * @param dt Zeit seit letztem Frame in Sekunden
      */
     public void updateProgram(double dt){
-
+        viewController.draw(p1,1);
     }
 
     public void processKeyboardInput(int keyCode) {
