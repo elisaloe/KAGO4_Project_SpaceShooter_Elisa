@@ -18,13 +18,13 @@ public class Player extends InteractiveGraphicalObject {
 //    private int direction;
     private static final double MOVE_SPEED = 5;     // Pixel pro Sekunde
     private int dirY = 0;                             // -1 = hoch, 0 = stehen, +1 = runter
-    private shoot = false;
+
 
     public Player(double x, double y){
         this.setNewImage("src/main/resources/graphic/spaceship.png");
         this.x = x;
         this.y = y;
-        this.shoot = shoot;
+
 
 //        speed = 15;
 //        hoverUp = true;
@@ -71,7 +71,7 @@ public class Player extends InteractiveGraphicalObject {
 public void keyPressed(int key){
     if(key == KeyEvent.VK_W) dirY = -1;           // W = hoch
     if(key == KeyEvent.VK_S) dirY =  1;           // S = runter
-    if(key == KeyEvent.VK_F) shoot = true;
+
 }
 
     @Override
@@ -81,11 +81,7 @@ public void keyPressed(int key){
         if(key == KeyEvent.VK_S && dirY ==  1) dirY = 0;
     }
 
-    public void schießen(){
-        if(shoot == true){
 
-        }
-    }
     /*public void keyReleased(int key) {
         if(key == keyToGoUp){
             direction = -1;
