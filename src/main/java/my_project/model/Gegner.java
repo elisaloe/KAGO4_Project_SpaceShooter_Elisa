@@ -21,15 +21,13 @@ public class Gegner extends GraphicalObject{
     }
     public void update(double dt) {
         this.x = x - speed+dt;
-        jumpBack();
+        if ( x< 0) jumpBack();
     }
     public void jumpBack() {
-        if (x < 0) {
             this.x = Math.random() *(800 -820)+ 820;
             this.y = Math.random() *(Config.WINDOW_HEIGHT-50) + 50;
             this.radius = Math.random()*10;
             this.speed = Math.random()* (7 -15)+15;
 
-        }
     }
 }

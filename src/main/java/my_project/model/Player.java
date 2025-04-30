@@ -16,8 +16,9 @@ public class Player extends InteractiveGraphicalObject {
 //    private int keyToGoUp;
 //    private int keyToGoDown;
 //    private int direction;
-    private static final double MOVE_SPEED = 5;     // Pixel pro Sekunde
-    private int dirY = 0;                             // -1 = hoch, 0 = stehen, +1 = runter
+    private static final double MOVE_SPEED = 150;     // Pixel pro Sekunde
+    private int dirY = 0;// -1 = hoch, 0 = stehen, +1 = runter
+    private int life = 100;
 
 
     public Player(double x, double y){
@@ -81,7 +82,13 @@ public void keyPressed(int key){
         if(key == KeyEvent.VK_S && dirY ==  1) dirY = 0;
     }
 
+    public int getLife() {
+        return life;
+    }
 
+    public void setLife(int life) {
+        this.life = life;
+    }
     /*public void keyReleased(int key) {
         if(key == keyToGoUp){
             direction = -1;

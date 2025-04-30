@@ -27,6 +27,8 @@ public class ProgramController {
     private final ViewController viewController;  // diese Referenz soll auf ein Objekt der Klasse viewController zeigen. Über dieses Objekt wird das Fenster gesteuert.
     private Player p1;
     private int currentScene;
+    private Gegner enemy;
+    private Lebensbalken leben;
     // Das ist ein toller Kommentar
 
     /**
@@ -78,21 +80,30 @@ public class ProgramController {
             viewController.draw(star,1);
         }
 
-        Gegner enemy = new Gegner(Math.random() *(Config.WINDOW_WIDTH-50) + 50,Math.random() * 800,Math.random()*10,5);
+        enemy = new Gegner(Math.random() *(Config.WINDOW_WIDTH-50) + 50,Math.random() * 800,Math.random()*10,5);
         viewController.draw(enemy,1);
         p1 = new Player(50,300);
         viewController.draw(p1,1);
         viewController.register(p1, 1);
+        leben = new Lebensbalken(100);
+        viewController.draw(leben,1);
 
         // Endbildschirm (Szene 2)
     }
+
 
     /**
      * Diese Methode wird vom ViewController-Objekt automatisch mit jedem Frame aufgerufen (ca. 60mal pro Sekunde)
      * @param dt Zeit seit letztem Frame in Sekunden
      */
     public void updateProgram(double dt){
-        viewController.draw(p1,1);
+        //System.out.println("P1: " + p1.getWidth() + " " + p1.getHeight());
+        //System.out.println("Gegner: " + enemy.getRadius());
+        if(p1.collidesWith(enemy)) {
+            leben.setWidth( leben.getWidth()-10 );
+            enemy.jumpBack();
+            p1.setLife(p1.getLife()-10 );
+        }
     }
 
     public void processKeyboardInput(int keyCode) {
