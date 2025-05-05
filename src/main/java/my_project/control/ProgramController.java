@@ -29,6 +29,7 @@ public class ProgramController {
     private int currentScene;
     private Gegner enemy;
     private Lebensbalken leben;
+    private Planet planet;
     // Das ist ein toller Kommentar
 
     /**
@@ -79,16 +80,23 @@ public class ProgramController {
             Stern star = new Stern(Math.random() *(Config.WINDOW_WIDTH-50) + 50,  Math.random() * 800,1,2);
             viewController.draw(star,1);
         }
+        for (int i = 0; i < 5; i++) {
+            enemy = new Gegner(Math.random() *(Config.WINDOW_WIDTH-50) + 50,Math.random() * 800,Math.random()*10,5);
+            viewController.draw(enemy,1);
+        }
 
-        enemy = new Gegner(Math.random() *(Config.WINDOW_WIDTH-50) + 50,Math.random() * 800,Math.random()*10,5);
-        viewController.draw(enemy,1);
         p1 = new Player(50,300);
         viewController.draw(p1,1);
         viewController.register(p1, 1);
         leben = new Lebensbalken(100);
         viewController.draw(leben,1);
+        planet = new Planet(Math.random() *(Config.WINDOW_WIDTH-50) + 50,Math.random() * 800,Math.random()*10,5);
+        viewController.draw(planet,1);
 
         // Endbildschirm (Szene 2)
+        viewController.createScene();
+        Ende end = new Ende();
+        viewController.draw(end,2);
     }
 
 
@@ -103,6 +111,10 @@ public class ProgramController {
             leben.setWidth( leben.getWidth()-10 );
             enemy.jumpBack();
             p1.setLife(p1.getLife()-10 );
+        }
+        if(p1.getLife()<=0 && currentScene == 1){
+            currentScene = 2;
+            viewController.showScene(currentScene);
         }
     }
 

@@ -16,7 +16,7 @@ public class Player extends InteractiveGraphicalObject {
 //    private int keyToGoUp;
 //    private int keyToGoDown;
 //    private int direction;
-    private static final double MOVE_SPEED = 150;     // Pixel pro Sekunde
+    private static final double MOVE_SPEED = 200;     // Pixel pro Sekunde
     private int dirY = 0;// -1 = hoch, 0 = stehen, +1 = runter
     private int life = 100;
 
