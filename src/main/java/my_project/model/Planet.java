@@ -15,7 +15,7 @@ public class Planet extends GraphicalObject{
         this.speed = speed;
     }
     public void draw(DrawTool drawTool) {
-        drawTool.setCurrentColor(0,128,128, 255);
+        drawTool.setCurrentColor(120,128,128, 255);
         drawTool.drawFilledCircle(x, y, radius);
 
     }

@@ -1,9 +1,7 @@
 package my_project.control;
 
-import KAGO_framework.control.Drawable;
 import KAGO_framework.control.SoundController;
 import KAGO_framework.control.ViewController;
-import KAGO_framework.view.DrawTool;
 import my_project.Config;
 import my_project.model.*;
 import my_project.view.InputManager;
@@ -28,6 +26,8 @@ public class ProgramController {
     private Player p1;
     private int currentScene;
     private Gegner enemy;
+    private Gegner[] enemys;
+
     private Lebensbalken leben;
     private Planet planet;
     // Das ist ein toller Kommentar
@@ -80,10 +80,14 @@ public class ProgramController {
             Stern star = new Stern(Math.random() *(Config.WINDOW_WIDTH-50) + 50,  Math.random() * 800,1,2);
             viewController.draw(star,1);
         }
-        for (int i = 0; i < 5; i++) {
-            enemy = new Gegner(Math.random() *(Config.WINDOW_WIDTH-50) + 50,Math.random() * 800,Math.random()*10,5);
-            viewController.draw(enemy,1);
+        enemys = new Gegner[5];
+        for (int i = 0; i < enemys.length;  i++) {
+            enemys[i] = new Gegner(Math.random() *(Config.WINDOW_WIDTH-50) + 50,Math.random() * 800,Math.random()*10,5);
+            viewController.draw(enemys[i],1);
         }
+
+
+
 
         p1 = new Player(50,300);
         viewController.draw(p1,1);
@@ -107,7 +111,7 @@ public class ProgramController {
     public void updateProgram(double dt){
         //System.out.println("P1: " + p1.getWidth() + " " + p1.getHeight());
         //System.out.println("Gegner: " + enemy.getRadius());
-        if(p1.collidesWith(enemy)) {
+        if(p1.collidesWith(enemys)) {
             leben.setWidth( leben.getWidth()-10 );
             enemy.jumpBack();
             p1.setLife(p1.getLife()-10 );
